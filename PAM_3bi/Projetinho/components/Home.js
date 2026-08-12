@@ -1,10 +1,20 @@
-import React,{useState} from 'react';
+import {React, useState} from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 
 // criar seu componentes personalizado
 
 function Home() {
   const [nome , setNome] = useState(" ");
+  const [imageSource, setImageSource] = useState({});
+
+  function trocarImagem()  {
+      if(nome == "Arthurzão Games"){
+         setImageSource(require('../img/arthur.webp'))
+      }
+      if (nome == null){
+         setImageSource(require('../img/semimagem.jpg'))
+      }
+   }
   
   return (
     <>
@@ -14,6 +24,10 @@ function Home() {
             placeholder=" Digite Nome"
             value={nome}
             onChangeText={(text)=>{setNome(text)}}              
+        />
+        <Button tittle="Trocar Imagem" onPress={trocarImagem} />
+        <image 
+        src = {{imageSource}}
         />
         <Text>Olá {nome} </Text>
         <Text>Bem vindo ao Node</Text>
