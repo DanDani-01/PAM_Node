@@ -16,6 +16,7 @@ function Home() {
             onChangeText={(text)=>{setNome(text)}}              
         />
         <Text>Olá {nome} </Text>
+        <Text>Bem vindo ao Node</Text>
     </>
    )
 }
