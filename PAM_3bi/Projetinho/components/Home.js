@@ -1,39 +1,31 @@
-import {React, useState} from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-// criar seu componentes personalizado
+function HomeScreen() {
+  const navigation = useNavigation();
 
-function Home() {
-  const [nome , setNome] = useState(" ");
-  const [imageSource, setImageSource] = useState({});
-
-  function trocarImagem()  {
-      if(nome == "Arthurzão Games"){
-         setImageSource(require('../img/arthur.webp'))
-      }
-      if (nome == null){
-         setImageSource(require('../img/semimagem.jpg'))
-      }
-   }
-  
   return (
-    <>
-       <Text>Nome</Text>
-        <TextInput
-           style={{borderColor :"black",height:40,width:200,borderWidth:1,borderRadius:10,padding:5}}
-            placeholder=" Digite Nome"
-            value={nome}
-            onChangeText={(text)=>{setNome(text)}}              
-        />
-        <Button tittle="Trocar Imagem" onPress={trocarImagem} />
-        <image 
-        src = {{imageSource}}
-        />
-        <Text>Olá {nome} </Text>
-        <Text>Bem vindo ao Node</Text>
-    </>
-   )
+    <View style={styles.container}>
+      <Text style={styles.title}>Home</Text>
+    </View>
+  );
 }
-export default Home;
 
-/// fazer um css incorporado
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f7',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#1d1d1f',
+    marginBottom: 40,
+  },
+});
+
+export default HomeScreen;
